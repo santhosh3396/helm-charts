@@ -1,0 +1,10 @@
+{{- if .Values.configmap.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  namespace: {{ .Release.Namespace }}
+data:
+  ENVIRONMENT: {{ .Values.env.ENVIRONMENT | quote }}
+  APP_NAME: {{ .Values.env.APP_NAME | quote }}
+{{- end }}
