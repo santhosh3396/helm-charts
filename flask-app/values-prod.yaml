@@ -1,0 +1,25 @@
+# Production environment overrides
+replicaCount: 3
+
+image:
+  tag: "stable"
+
+env:
+  ENVIRONMENT: "production"
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "200m"
+  limits:
+    memory: "256Mi"
+    cpu: "400m"
+
+ingress:
+  tls: true
